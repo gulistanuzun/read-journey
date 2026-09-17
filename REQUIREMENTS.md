@@ -229,10 +229,32 @@ Base URL: `https://readjourney.b.goit.study/api`
 
 > Token stratejisi: `token` + `refreshToken` ikilisi var → access token süresi dolunca `/users/current/refresh` ile yenileme yapılacak. Redux store'da ikisini de saklayıp, API isteklerinde `Authorization: Bearer <token>` header'ı göndereceğiz; 401 alırsak refresh akışını tetikleyeceğiz.
 
+### Book Şemaları
+
+**`GetRecommendBooksResponse`** (GET `/books/recommend` response):
+```json
+{
+  "results": [
+    {
+      "_id": "654fc4d00a563c69b09895ef",
+      "title": "Lovers of Justice",
+      "author": "Yuri Andrukhovych",
+      "imageUrl": "https://res.cloudinary.com/.../1.webp",
+      "totalPages": 304,
+      "recommend": true
+    }
+  ],
+  "totalPages": 4,
+  "page": 1,
+  "perPage": 2
+}
+```
+
+> Not: Pagination bilgisi response içinde geliyor (`page`, `perPage`, `totalPages`). Yani istek atarken query parametresi olarak `?page=1&perPage=10` gibi göndereceğiz, backend bize toplam sayfa sayısını söyleyecek — "ileri" okunun `page < totalPages` iken aktif, `page === totalPages` iken disabled olacağını buradan hesaplayacağız. "Geri" oku ise `page > 1` iken aktif olacak.
+
 ### Diğer Şemalar (henüz detay içi açılmadı — isim listesi)
 
 - `GetCurrentResponse`, `GetRefreshCurrentResponse`, `SignOutResponse`
-- `GetRecommendBooksResponse`
 - `AddNewBookRequest`, `AddNewBookResponse`, `RemoveBookResponse`
 - `StartReadingBookRequest`, `StartReadingBookResponse`
 - `FinishReadingBookRequest`, `FinishReadingBookResponse`
