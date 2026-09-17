@@ -1,0 +1,20 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://adesso-ai-hub.3asabc.de",
+    "ANTHROPIC_AUTH_TOKEN": "sk-9uOOA_KIaJsCHfhkR1gqYw",
+    "ANTHROPIC_MODEL": "claude-sonnet-5*",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash-sovereign",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5*",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-5*"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")",
+      "Bash(mongod --version)",
+      "Bash(command -v mongosh)"
+    ]
+  },
+  "model": "sonnet",
+  "effortLevel": "medium",
+  "agentPushNotifEnabled": true
+}
