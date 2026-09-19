@@ -2,7 +2,15 @@ import Modal from 'react-modal'
 
 Modal.setAppElement('#root')
 
-const BookModal = ({ book, isOpen, onClose, onAction, actionLabel }) => {
+const BookModal = ({
+  book,
+  isOpen,
+  onClose,
+  onAction,
+  actionLabel,
+  onSecondaryAction,
+  secondaryLabel,
+}) => {
   if (!book) return null
 
   return (
@@ -18,6 +26,9 @@ const BookModal = ({ book, isOpen, onClose, onAction, actionLabel }) => {
       <p>{book.author}</p>
       <p>{book.totalPages} pages</p>
       <button onClick={onAction}>{actionLabel}</button>
+      {onSecondaryAction && (
+        <button onClick={onSecondaryAction}>{secondaryLabel}</button>
+      )}
     </Modal>
   )
 }
