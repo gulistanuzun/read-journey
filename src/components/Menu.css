@@ -1,0 +1,78 @@
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.menu-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--text-h);
+  cursor: pointer;
+  padding: 0;
+    position: absolute;
+  top: 24px;
+  right: 24px;
+  margin-bottom: 0;
+}
+.menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 280px;
+  max-width: 80vw;
+  box-sizing: border-box;
+  padding: 24px;
+    background: rgba(38, 38, 38, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-nav {
+  position: absolute;
+  top: 280px;
+  left: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.menu-link {
+  color: rgba(104, 104, 104, 1);
+  text-decoration: none;
+  font-family: 'Gilroy', var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  padding-bottom: 8px;
+  width: fit-content;
+}
+
+.menu-link.active {
+  color: rgba(249, 249, 249, 1);
+  border-bottom: 3px solid rgba(79, 146, 247, 1);
+}
+
+
+.menu-logout {
+  margin-top: auto;
+  width: auto;
+  white-space: nowrap;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(249, 249, 249, 0.2);
+  background: transparent;
+  color: rgba(249, 249, 249, 1);
+  font-family: 'Gilroy', var(--sans);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}

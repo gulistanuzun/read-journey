@@ -1,13 +1,13 @@
 :root {
 --text: #686868;
 --text-h: #f9f9f9;
---panel-bg: #1f1f1f;
---input-bg: #262626;
+--panel-bg: rgba(31, 31, 31, 1);
+--input-bg: rgba(38, 38, 38, 1);
 --accent: #f9f9f9;
 --accent-text: #1f1f1f;
   --error: #ef4b4b;
 --border: #34333c;
-  --bg: #191922;
+  --bg: rgba(20, 20, 20, 1);
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;

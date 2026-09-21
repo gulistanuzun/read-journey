@@ -7,6 +7,9 @@ import {
 } from '../services/bookService'
 import BookCard from '../components/BookCard'
 import BookModal from '../components/BookModal'
+import Header from '../components/Header'
+import Menu from '../components/Menu'
+import Filters from '../components/Filters'
 
 const RecommendedPage = () => {
   const [books, setBooks] = useState([])
@@ -14,6 +17,7 @@ const RecommendedPage = () => {
   const [totalPages, setTotalPages] = useState(1)
   const [selectedBook, setSelectedBook] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -49,6 +53,8 @@ const RecommendedPage = () => {
 
   return (
     <div>
+      <Header onMenuClick={() => setIsMenuOpen(true)} />
+      <Filters />
       <h1>Recommended Page</h1>
       <ul>
         {books.map((book) => (
@@ -76,6 +82,8 @@ const RecommendedPage = () => {
         onAction={handleAddToLibrary}
         actionLabel="Add to library"
       />
+      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
     </div>
   )
 }
