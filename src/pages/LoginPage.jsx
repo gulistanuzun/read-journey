@@ -7,6 +7,9 @@ import { toast } from 'react-toastify'
 import { loginUser } from '../services/authService'
 import { setAuthHeader } from '../services/api'
 import { setCredentials } from '../redux/auth/authSlice'
+import AuthLayout from '../components/AuthLayout'
+import AuthField from '../components/AuthField'
+import PasswordInput from '../components/PasswordInput'
 
 const schema = yup.object({
   email: yup
@@ -45,25 +48,44 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input type="email" placeholder="Email" {...register('email')} />
-          {errors.email && <p>{errors.email.message}</p>}
+    <AuthLayout>
+      <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="auth-fields">
+          <div>
+            <AuthField
+              label="Mail:"
+              type="email"
+              placeholder="Your@email.com"
+              error={!!errors.email}
+              {...register('email')}
+            />
+            {errors.email && (
+              <p className="auth-error">{errors.email.message}</p>
+            )}
+          </div>
+          <div>
+            <PasswordInput
+              label="Password:"
+              placeholder="Yourpasswordhere"
+              error={!!errors.password}
+              {...register('password')}
+            />
+            {errors.password && (
+              <p className="auth-error">{errors.password.message}</p>
+            )}
+          </div>
+          <div className="auth-field-box auth-field-box--ghost" aria-hidden="true" />
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            {...register('password')}
-          />
-          {errors.password && <p>{errors.password.message}</p>}
+        <div className="auth-actions">
+          <button className="auth-submit" type="submit">
+            Log In
+          </button>
+          <Link className="auth-switch-link" to="/register">
+            Don't have an account?
+          </Link>
         </div>
-        <button type="submit">Log In</button>
       </form>
-      <Link to="/register">Don't have an account?</Link>
-    </div>
+    </AuthLayout>
   )
 }
 

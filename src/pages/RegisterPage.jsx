@@ -7,6 +7,9 @@ import { toast } from 'react-toastify'
 import { registerUser } from '../services/authService'
 import { setAuthHeader } from '../services/api'
 import { setCredentials } from '../redux/auth/authSlice'
+import AuthLayout from '../components/AuthLayout'
+import AuthField from '../components/AuthField'
+import PasswordInput from '../components/PasswordInput'
 
 const schema = yup.object({
   name: yup.string().required('Name is required'),
@@ -38,37 +41,59 @@ const RegisterPage = () => {
       setAuthHeader(result.token)
       dispatch(setCredentials(result))
       navigate('/recommended')
-        } catch (error) {
-      const message = error.response?.data?.message || 'Registration failed. Please try again.'
+    } catch (error) {
+      const message =
+        error.response?.data?.message || 'Registration failed. Please try again.'
       toast.error(message)
     }
-
   }
 
   return (
-    <div>
-      <h1>Registration</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input type="text" placeholder="Name" {...register('name')} />
-          {errors.name && <p>{errors.name.message}</p>}
+    <AuthLayout>
+      <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="auth-fields">
+          <div>
+            <AuthField
+              label="Name:"
+              type="text"
+              placeholder="Ilona Ratushniak"
+              error={!!errors.name}
+              {...register('name')}
+            />
+            {errors.name && <p className="auth-error">{errors.name.message}</p>}
+          </div>
+          <div>
+            <AuthField
+              label="Mail:"
+              type="email"
+              placeholder="Your@email.com"
+              error={!!errors.email}
+              {...register('email')}
+            />
+            {errors.email && <p className="auth-error">{errors.email.message}</p>}
+          </div>
+          <div>
+            <PasswordInput
+              label="Password:"
+              placeholder="Yourpasswordhere"
+              error={!!errors.password}
+              {...register('password')}
+            />
+            {errors.password && (
+              <p className="auth-error">{errors.password.message}</p>
+            )}
+          </div>
         </div>
-        <div>
-          <input type="email" placeholder="Email" {...register('email')} />
-          {errors.email && <p>{errors.email.message}</p>}
+        <div className="auth-actions">
+          <button className="auth-submit" type="submit">
+            Registration
+          </button>
+          <Link className="auth-switch-link" to="/login">
+            Already have an account?
+          </Link>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            {...register('password')}
-          />
-          {errors.password && <p>{errors.password.message}</p>}
-        </div>
-        <button type="submit">Registration</button>
       </form>
-      <Link to="/login">Already have an account?</Link>
-    </div>
+    </AuthLayout>
   )
 }
 
