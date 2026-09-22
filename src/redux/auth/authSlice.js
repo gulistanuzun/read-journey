@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const persistedAuth = JSON.parse(localStorage.getItem("auth"));
+
+const initialState = persistedAuth ?? {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
@@ -17,11 +19,20 @@ const authSlice = createSlice({
       };
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      localStorage.setItem(
+        "auth",
+        JSON.stringify({
+          user: state.user,
+          token: state.token,
+          isLoggedIn: state.isLoggedIn,
+        })
+      );
     },
     clearCredentials: (state) => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      localStorage.removeItem("auth");
     },
   },
 });

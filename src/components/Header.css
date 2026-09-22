@@ -8,9 +8,6 @@
   padding: 0 20px;
   border-radius: 15px;
   background: var(--panel-bg);
-  position: absolute;
-  top: 20px;
-  left: 20px;
 }
 
 .app-header-logo {

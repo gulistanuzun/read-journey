@@ -4,12 +4,26 @@ import { toast } from 'react-toastify'
 import { getOwnBooks, removeBook } from '../services/bookService'
 import BookCard from '../components/BookCard'
 import BookModal from '../components/BookModal'
+import Header from '../components/Header'
+import Menu from '../components/Menu'
+import AddBookForm from '../components/AddBookForm'
+import RecommendedMini from '../components/RecommendedMini'
+import './LibraryPage.css'
+
+const STATUS_OPTIONS = [
+  { value: 'all', label: 'All books' },
+  { value: 'unread', label: 'Unread' },
+  { value: 'in-progress', label: 'In progress' },
+  { value: 'done', label: 'Done' },
+]
 
 const LibraryPage = () => {
   const navigate = useNavigate()
   const [books, setBooks] = useState([])
+  const [statusFilter, setStatusFilter] = useState('all')
   const [selectedBook, setSelectedBook] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -46,20 +60,56 @@ const LibraryPage = () => {
     }
   }
 
+  const handleBookAdded = (newBook) => {
+    setBooks((prev) => [newBook, ...prev])
+  }
+
+  const filteredBooks =
+    statusFilter === 'all'
+      ? books
+      : books.filter((book) => book.status === statusFilter)
+
   return (
-    <div>
-      <h1>Library Page</h1>
-      {books.length === 0 ? (
-        <p>Your library is empty</p>
-      ) : (
-        <ul>
-          {books.map((book) => (
-            <div key={book._id} onClick={() => openBookModal(book)}>
-              <BookCard book={book} />
-            </div>
-          ))}
-        </ul>
-      )}
+    <div className="library-page">
+      <Header onMenuClick={() => setIsMenuOpen(true)} />
+      <div className="library-sidebar-panel">
+        <AddBookForm onBookAdded={handleBookAdded} />
+        <RecommendedMini />
+      </div>
+      <div className="library-panel">
+        <div className="library-panel-header">
+          <h2 className="library-panel-title">My library</h2>
+          <select
+            className="library-status-select"
+            value={statusFilter}
+            onChange={(event) => setStatusFilter(event.target.value)}
+          >
+            {STATUS_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        {filteredBooks.length === 0 ? (
+          <div className="library-empty">
+            <p className="library-empty-text">
+              To start training, add some of your books or from the
+              recommended ones
+            </p>
+          </div>
+        ) : (
+          <ul className="library-book-grid">
+            {filteredBooks.map((book) => (
+              <BookCard
+                key={book._id}
+                book={book}
+                onClick={() => openBookModal(book)}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
       <BookModal
         book={selectedBook}
         isOpen={isModalOpen}
@@ -69,6 +119,7 @@ const LibraryPage = () => {
         onSecondaryAction={handleDelete}
         secondaryLabel="Delete"
       />
+      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </div>
   )
 }

@@ -5,6 +5,12 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import { store } from './redux/store.js'
+import { setAuthHeader } from './services/api.js'
+
+const persistedAuth = JSON.parse(localStorage.getItem('auth'))
+if (persistedAuth?.token) {
+  setAuthHeader(persistedAuth.token)
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

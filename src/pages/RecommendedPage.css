@@ -1,0 +1,75 @@
+.recommended-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.recommended-sidebar-panel {
+  width: 335px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background: var(--panel-bg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.recommended-panel {
+  width: 335px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background: var(--panel-bg);
+  padding: 24px;
+}
+
+.recommended-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.recommended-panel-title {
+  margin: 0;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+}
+
+.recommended-panel-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.recommended-nav-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(249, 249, 249, 0.2);
+  background: transparent;
+  color: rgba(249, 249, 249, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.recommended-nav-button:disabled {
+  color: rgba(249, 249, 249, 0.2);
+  cursor: not-allowed;
+}
+
+.recommended-book-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 21px;
+}

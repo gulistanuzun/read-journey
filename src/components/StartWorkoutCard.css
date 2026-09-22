@@ -1,0 +1,110 @@
+.start-workout {
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: var(--input-bg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.start-workout-title {
+  margin: 0;
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.start-workout-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.start-workout-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.start-workout-step-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(249, 249, 249, 1);
+  color: rgba(31, 31, 31, 1);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-workout-step-text {
+  margin: 0;
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+.start-workout-step-highlight {
+  color: rgba(249, 249, 249, 1);
+}
+
+.start-workout-link {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+.start-workout-link span:first-child {
+  text-decoration: underline;
+}
+
+.start-workout-arrow {
+  flex-shrink: 0;
+  position: relative;
+  width: 14px;
+  height: 8px;
+}
+
+.start-workout-arrow::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 14px;
+  height: 0;
+  border-top: 2px solid rgba(249, 249, 249, 1);
+}
+
+.start-workout-arrow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(249, 249, 249, 1);
+  border-right: 2px solid rgba(249, 249, 249, 1);
+  transform: rotate(45deg);
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import {
   getRecommendedBooks,
   getBookById,
@@ -10,6 +11,8 @@ import BookModal from '../components/BookModal'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
 import Filters from '../components/Filters'
+import StartWorkoutCard from '../components/StartWorkoutCard'
+import './RecommendedPage.css'
 
 const RecommendedPage = () => {
   const [books, setBooks] = useState([])
@@ -52,29 +55,44 @@ const RecommendedPage = () => {
   }
 
   return (
-    <div>
+    <div className="recommended-page">
       <Header onMenuClick={() => setIsMenuOpen(true)} />
-      <Filters />
-      <h1>Recommended Page</h1>
-      <ul>
-        {books.map((book) => (
-          <div key={book._id} onClick={() => openBookModal(book._id)}>
-            <BookCard book={book} />
+      <div className="recommended-sidebar-panel">
+        <Filters />
+        <StartWorkoutCard />
+      </div>
+      <div className="recommended-panel">
+        <div className="recommended-panel-header">
+          <h2 className="recommended-panel-title">Recommended</h2>
+          <div className="recommended-panel-nav">
+            <button
+              className="recommended-nav-button"
+              type="button"
+              disabled={page === 1}
+              onClick={() => setPage(page - 1)}
+            >
+              <FiChevronLeft size={18} />
+            </button>
+            <button
+              className="recommended-nav-button"
+              type="button"
+              disabled={page === totalPages}
+              onClick={() => setPage(page + 1)}
+            >
+              <FiChevronRight size={18} />
+            </button>
           </div>
-        ))}
-      </ul>
-      <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-        Previous
-      </button>
-      <span>
-        {page} / {totalPages}
-      </span>
-      <button
-        disabled={page === totalPages}
-        onClick={() => setPage(page + 1)}
-      >
-        Next
-      </button>
+        </div>
+        <ul className="recommended-book-grid">
+          {books.map((book) => (
+            <BookCard
+              key={book._id}
+              book={book}
+              onClick={() => openBookModal(book._id)}
+            />
+          ))}
+        </ul>
+      </div>
       <BookModal
         book={selectedBook}
         isOpen={isModalOpen}
@@ -83,7 +101,6 @@ const RecommendedPage = () => {
         actionLabel="Add to library"
       />
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-
     </div>
   )
 }

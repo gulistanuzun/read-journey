@@ -16,6 +16,11 @@ export const addBookFromRecommended = async (id) => {
   return response.data
 }
 
+export const addBook = async ({ title, author, totalPages }) => {
+  const response = await api.post('/books/add', { title, author, totalPages })
+  return response.data
+}
+
 export const getOwnBooks = async () => {
   const response = await api.get('/books/own')
   return response.data
