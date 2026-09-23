@@ -1,0 +1,78 @@
+.status-dropdown {
+  position: relative;
+  width: 120px;
+}
+
+.status-dropdown-button {
+  width: 120px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(62, 62, 62, 1);
+  background: transparent;
+  color: rgba(249, 249, 249, 1);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.status-dropdown-icon {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  color: rgba(249, 249, 249, 1);
+}
+
+.status-dropdown-icon.is-open {
+  transform: rotate(180deg);
+}
+
+.status-dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 120px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: rgba(38, 38, 38, 1);
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+}
+
+.status-dropdown-option {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: rgba(104, 104, 104, 1);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.status-dropdown-option.is-selected {
+  color: rgba(249, 249, 249, 1);
+}
+
+.status-dropdown-option:hover {
+  background: rgba(249, 249, 249, 0.05);
+}

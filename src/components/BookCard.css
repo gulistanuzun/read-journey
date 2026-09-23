@@ -13,10 +13,34 @@
   display: block;
 }
 
+.book-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .book-card-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
+}
+
+.book-card-delete {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 80, 80, 0.2);
+  background: rgba(232, 80, 80, 0.1);
+  color: rgba(232, 80, 80, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
 }
 
 .book-card-title {

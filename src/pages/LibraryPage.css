@@ -42,25 +42,6 @@
   letter-spacing: -0.02em;
 }
 
-.library-status-select {
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 30px;
-  border: 1px solid rgba(249, 249, 249, 0.2);
-  background: transparent;
-  color: var(--text-h);
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: -0.02em;
-  cursor: pointer;
-}
-
-.library-status-select option {
-  background: var(--panel-bg);
-  color: var(--text-h);
-}
-
 .library-book-grid {
   list-style: none;
   margin: 0;
@@ -72,17 +53,35 @@
 
 .library-empty {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   padding: 40px 0;
+}
+
+.library-empty-icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(38, 38, 38, 1);
+  opacity: 1;
+  font-size: 40px;
 }
 
 .library-empty-text {
   max-width: 240px;
   text-align: center;
-  color: var(--text);
+  color: var(--text-h);
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.02em;
+}
+
+.library-empty-text span {
+  color: var(--text);
 }

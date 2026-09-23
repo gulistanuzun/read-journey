@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import Menu from '../components/Menu'
 import AddBookForm from '../components/AddBookForm'
 import RecommendedMini from '../components/RecommendedMini'
+import StatusDropdown from '../components/StatusDropdown'
 import './LibraryPage.css'
 
 const STATUS_OPTIONS = [
@@ -47,11 +48,11 @@ const LibraryPage = () => {
     navigate('/reading')
   }
 
-  const handleDelete = async () => {
+  const handleRemoveBook = async (bookId) => {
     try {
-      await removeBook(selectedBook._id)
+      await removeBook(bookId)
       toast.success('Book removed from your library')
-      setBooks((prev) => prev.filter((book) => book._id !== selectedBook._id))
+      setBooks((prev) => prev.filter((book) => book._id !== bookId))
       closeModal()
     } catch (error) {
       const message =
@@ -59,6 +60,9 @@ const LibraryPage = () => {
       toast.error(message)
     }
   }
+
+  const handleDelete = () => handleRemoveBook(selectedBook._id)
+  const handleCardDelete = (book) => handleRemoveBook(book._id)
 
   const handleBookAdded = (newBook) => {
     setBooks((prev) => [newBook, ...prev])
@@ -79,23 +83,18 @@ const LibraryPage = () => {
       <div className="library-panel">
         <div className="library-panel-header">
           <h2 className="library-panel-title">My library</h2>
-          <select
-            className="library-status-select"
+          <StatusDropdown
+            options={STATUS_OPTIONS}
             value={statusFilter}
-            onChange={(event) => setStatusFilter(event.target.value)}
-          >
-            {STATUS_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+            onChange={setStatusFilter}
+          />
         </div>
         {filteredBooks.length === 0 ? (
           <div className="library-empty">
+            <div className="library-empty-icon">📚</div>
             <p className="library-empty-text">
-              To start training, add some of your books or from the
-              recommended ones
+              To start training, add <span>some of your books</span> or from
+              the recommended ones
             </p>
           </div>
         ) : (
@@ -105,6 +104,7 @@ const LibraryPage = () => {
                 key={book._id}
                 book={book}
                 onClick={() => openBookModal(book)}
+                onDelete={handleCardDelete}
               />
             ))}
           </ul>

@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { addBook } from '../services/bookService'
+import BookAddedModal from './BookAddedModal'
 import './AddBookForm.css'
 
 const AddBookForm = ({ onBookAdded }) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [totalPages, setTotalPages] = useState('')
+  const [isAddedModalOpen, setIsAddedModalOpen] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -16,11 +18,11 @@ const AddBookForm = ({ onBookAdded }) => {
         author,
         totalPages: Number(totalPages),
       })
-      toast.success('Book added to your library')
       setTitle('')
       setAuthor('')
       setTotalPages('')
       onBookAdded?.(newBook)
+      setIsAddedModalOpen(true)
     } catch (error) {
       const message = error.response?.data?.message || 'Could not add the book'
       toast.error(message)
@@ -67,6 +69,10 @@ const AddBookForm = ({ onBookAdded }) => {
       <button className="add-book-submit" type="submit">
         Add book
       </button>
+      <BookAddedModal
+        isOpen={isAddedModalOpen}
+        onClose={() => setIsAddedModalOpen(false)}
+      />
     </form>
   )
 }
