@@ -15,7 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/recommended" element={<RecommendedPage />} />
         <Route path="/library" element={<LibraryPage />} />
-        <Route path="/reading" element={<ReadingPage />} />
+        <Route path="/reading/:bookId" element={<ReadingPage />} />
       </Routes>
       <ToastContainer />
     </>

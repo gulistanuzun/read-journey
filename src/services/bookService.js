@@ -30,3 +30,18 @@ export const removeBook = async (id) => {
   const response = await api.delete(`/books/remove/${id}`)
   return response.data
 }
+
+export const startReading = async ({ id, page }) => {
+  const response = await api.post('/books/reading/started', { id, page })
+  return response.data
+}
+
+export const finishReading = async ({ id, page }) => {
+  const response = await api.post('/books/reading/finished', { id, page })
+  return response.data
+}
+
+export const removeDiaryEntry = async (bookId, readingId) => {
+  const response = await api.delete(`/books/reading/${bookId}/${readingId}`)
+  return response.data
+}

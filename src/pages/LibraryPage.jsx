@@ -45,7 +45,7 @@ const LibraryPage = () => {
   }
 
   const handleStartReading = () => {
-    navigate('/reading')
+    navigate(`/reading/${selectedBook._id}`)
   }
 
   const handleRemoveBook = async (bookId) => {

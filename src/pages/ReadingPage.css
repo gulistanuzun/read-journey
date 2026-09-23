@@ -1,0 +1,432 @@
+.reading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.reading-panel {
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reading-info-card,
+.reading-summary-card {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background: var(--panel-bg);
+  padding: 24px;
+}
+
+.reading-info-card {
+  min-height: 390px;
+}
+
+.reading-control-section {
+  margin-bottom: 24px;
+}
+
+.reading-control-label {
+  display: block;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  padding-left: 16px;
+}
+
+.reading-control-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(104, 104, 104, 0.2);
+  margin-bottom: 16px;
+}
+
+.reading-control-input-prefix {
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.reading-control-input {
+  width: 40px;
+  flex: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: rgba(249, 249, 249, 1);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  padding: 0;
+}
+
+.reading-control-input::-webkit-inner-spin-button,
+.reading-control-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.reading-control-button {
+  min-width: 91px;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(249, 249, 249, 0.2);
+  background: transparent;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reading-control-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reading-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.reading-info-title {
+  margin: 0;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+.reading-info-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.reading-info-tab {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: rgba(104, 104, 104, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reading-info-tab.is-active {
+  color: var(--text-h);
+  background: rgba(249, 249, 249, 0.1);
+}
+
+.reading-progress-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.reading-progress-empty-text {
+  margin: 0;
+  text-align: left;
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+.reading-progress-empty-icon-circle {
+  align-self: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(38, 38, 38, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reading-progress-empty-icon {
+  font-size: 32px;
+  line-height: 32px;
+}
+
+.reading-diary-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.reading-diary-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reading-diary-entry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reading-diary-entry-date {
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.reading-diary-entry-pages {
+  color: var(--text-h);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
+
+.reading-diary-entry-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reading-diary-entry-stats {
+  display: flex;
+  flex-direction: column;
+  min-width: 48px;
+}
+
+.reading-diary-entry-percentage {
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
+
+.reading-diary-entry-minutes {
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+}
+
+.reading-diary-entry-bar-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reading-diary-entry-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(249, 249, 249, 0.1);
+  overflow: hidden;
+}
+
+.reading-diary-entry-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: rgba(88, 191, 108, 1);
+}
+
+.reading-diary-entry-speed {
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+}
+
+.reading-diary-entry-delete {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(232, 80, 80, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reading-statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.reading-statistics-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reading-statistics-ring-label {
+  position: absolute;
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.reading-statistics-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reading-statistics-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(88, 191, 108, 1);
+}
+
+.reading-statistics-legend-text {
+  color: var(--text-h);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
+
+.reading-statistics-total {
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
+
+.reading-summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 471px;
+}
+
+.reading-summary-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.reading-summary-title {
+  margin: 0;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+}
+
+.reading-summary-time {
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.reading-summary-cover {
+  width: 137px;
+  height: 208px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.reading-summary-book-title {
+  margin: 16px 0 0;
+  color: rgba(249, 249, 249, 1);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.reading-summary-book-author {
+  margin: 4px 0 0;
+  color: rgba(104, 104, 104, 1);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.reading-summary-button {
+  margin-top: 20px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(249, 249, 249, 1);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reading-summary-button.is-done {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reading-summary-button-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(233, 5, 22, 1);
+}
