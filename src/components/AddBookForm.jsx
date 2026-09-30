@@ -67,7 +67,7 @@ const AddBookForm = ({ onBookAdded }) => {
         />
       </div>
       <button className="add-book-submit" type="submit">
-        Add book
+        Add Book
       </button>
       <BookAddedModal
         isOpen={isAddedModalOpen}
