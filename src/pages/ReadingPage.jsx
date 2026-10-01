@@ -38,13 +38,13 @@ const ReadingPage = () => {
   }, [bookId])
 
   const progress = book?.progress || []
-  const activeEntry = progress.find((entry) => !entry.finishReadingDate)
+  const activeEntry = progress.find((entry) => !entry.finishReading)
   const isReading = Boolean(activeEntry)
   const isBookDone = book?.status === 'done'
 
-  const finishedEntries = progress.filter((entry) => entry.finishReadingDate)
+  const finishedEntries = progress.filter((entry) => entry.finishReading)
   const totalPagesRead = finishedEntries.reduce(
-    (sum, entry) => sum + (entry.finishReadingPage - entry.startReadingPage),
+    (sum, entry) => sum + (entry.finishPage - entry.startPage),
     0
   )
   const percentRead = book?.totalPages
@@ -53,14 +53,11 @@ const ReadingPage = () => {
   const lastEntry = finishedEntries[finishedEntries.length - 1]
   const lastPercent =
     lastEntry && book?.totalPages
-      ? ((lastEntry.finishReadingPage - lastEntry.startReadingPage) /
-          book.totalPages) *
-        100
+      ? ((lastEntry.finishPage - lastEntry.startPage) / book.totalPages) * 100
       : 0
 
   const totalMinutes = finishedEntries.reduce((sum, entry) => {
-    const diffMs =
-      new Date(entry.finishReadingDate) - new Date(entry.startReadingDate)
+    const diffMs = new Date(entry.finishReading) - new Date(entry.startReading)
     return sum + diffMs / 60000
   }, 0)
   const avgSpeedPerHour =
@@ -200,10 +197,10 @@ const ReadingPage = () => {
                 .slice()
                 .reverse()
                 .map((entry) => {
-                  const pages = entry.finishReadingPage - entry.startReadingPage
+                  const pages = entry.finishPage - entry.startPage
                   const minutes = Math.round(
-                    (new Date(entry.finishReadingDate) -
-                      new Date(entry.startReadingDate)) /
+                    (new Date(entry.finishReading) -
+                      new Date(entry.startReading)) /
                       60000
                   )
                   const percentage = book.totalPages
@@ -214,9 +211,12 @@ const ReadingPage = () => {
                   return (
                     <li className="reading-diary-entry" key={entry._id}>
                       <div className="reading-diary-entry-top">
-                        <span className="reading-diary-entry-date">
-                          {formatDate(entry.startReadingDate)}
-                        </span>
+                        <div className="reading-diary-entry-left">
+                          <span className="reading-diary-entry-icon" />
+                          <span className="reading-diary-entry-date">
+                            {formatDate(entry.startReading)}
+                          </span>
+                        </div>
                         <span className="reading-diary-entry-pages">
                           {pages} pages
                         </span>

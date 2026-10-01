@@ -195,15 +195,53 @@
 }
 
 .reading-diary-entry {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.reading-diary-entry:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 16px;
+  bottom: -16px;
+  width: 2px;
+  background: rgba(249, 249, 249, 0.15);
 }
 
 .reading-diary-entry-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.reading-diary-entry-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reading-diary-entry-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(249, 249, 249, 1);
+}
+
+.reading-diary-entry-icon::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(88, 191, 108, 1);
+  border: 2px solid var(--panel-bg);
 }
 
 .reading-diary-entry-date {
