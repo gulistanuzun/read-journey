@@ -187,11 +187,29 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-height: 260px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 249, 249, 0.2) transparent;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.reading-diary-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.reading-diary-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reading-diary-list::-webkit-scrollbar-thumb {
+  background: rgba(249, 249, 249, 0.2);
+  border-radius: 4px;
 }
 
 .reading-diary-entry {
@@ -204,8 +222,8 @@
 .reading-diary-entry:not(:last-child)::after {
   content: '';
   position: absolute;
-  left: 7px;
-  top: 16px;
+  left: 15px;
+  top: 32px;
   bottom: -16px;
   width: 2px;
   background: rgba(249, 249, 249, 0.15);
@@ -220,28 +238,15 @@
 .reading-diary-entry-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .reading-diary-entry-icon {
-  position: relative;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: rgba(249, 249, 249, 1);
-}
-
-.reading-diary-entry-icon::after {
-  content: '';
-  position: absolute;
-  right: -2px;
-  bottom: -2px;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background: rgba(88, 191, 108, 1);
-  border: 2px solid var(--panel-bg);
 }
 
 .reading-diary-entry-date {
@@ -289,21 +294,36 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 4px;
 }
 
-.reading-diary-entry-bar {
-  width: 100%;
-  height: 6px;
-  border-radius: 4px;
-  background: rgba(249, 249, 249, 0.1);
-  overflow: hidden;
+.reading-diary-entry-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.reading-diary-entry-bar-fill {
+.reading-diary-entry-bar {
+  flex-shrink: 0;
+  width: 43px;
+  height: 18px;
+}
+
+.reading-diary-entry-bar-svg {
+  width: 100%;
   height: 100%;
-  border-radius: 4px;
-  background: rgba(88, 191, 108, 1);
+}
+
+.reading-diary-entry-bar-area {
+  fill: rgba(48, 185, 77, 0.2);
+  stroke: none;
+}
+
+.reading-diary-entry-bar-line {
+  stroke: rgba(48, 185, 77, 1);
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 .reading-diary-entry-speed {
@@ -311,6 +331,7 @@
   font-weight: 500;
   font-size: 10px;
   letter-spacing: -0.02em;
+  text-align: right;
 }
 
 .reading-diary-entry-delete {

@@ -231,24 +231,39 @@ const ReadingPage = () => {
                           </span>
                         </div>
                         <div className="reading-diary-entry-bar-wrap">
-                          <div className="reading-diary-entry-bar">
-                            <div
-                              className="reading-diary-entry-bar-fill"
-                              style={{ width: `${Math.min(100, percentage)}%` }}
-                            />
+                          <div className="reading-diary-entry-bar-row">
+                            <div className="reading-diary-entry-bar">
+                              <svg
+                                className="reading-diary-entry-bar-svg"
+                                viewBox="0 0 43 18"
+                                preserveAspectRatio="none"
+                              >
+                                <polygon
+                                  className="reading-diary-entry-bar-area"
+                                  points="0,16 43,2 43,16"
+                                />
+                                <line
+                                  className="reading-diary-entry-bar-line"
+                                  x1="0"
+                                  y1="16"
+                                  x2="43"
+                                  y2="2"
+                                />
+                              </svg>
+                            </div>
+                            <button
+                              type="button"
+                              className="reading-diary-entry-delete"
+                              onClick={() => handleDeleteEntry(entry._id)}
+                              aria-label="Delete entry"
+                            >
+                              <FiTrash2 size={14} />
+                            </button>
                           </div>
                           <span className="reading-diary-entry-speed">
                             {speed} pages per hour
                           </span>
                         </div>
-                        <button
-                          type="button"
-                          className="reading-diary-entry-delete"
-                          onClick={() => handleDeleteEntry(entry._id)}
-                          aria-label="Delete entry"
-                        >
-                          <FiTrash2 size={14} />
-                        </button>
                       </div>
                     </li>
                   )
